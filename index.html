@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FaunaFlow Enterprise - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-container": "#a3becc",
+                        "on-background": "#181c20",
+                        "surface-container-high": "#e5e8ee",
+                        "surface-variant": "#dfe3e8",
+                        "surface-dim": "#d7dae0",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d5e3ff",
+                        "tertiary-fixed": "#cbe7f5",
+                        "on-primary-container": "#93bcfc",
+                        "surface-tint": "#335f99",
+                        "surface-container": "#ebeef4",
+                        "on-surface-variant": "#424750",
+                        "on-primary": "#ffffff",
+                        "secondary": "#476550",
+                        "outline": "#737781",
+                        "on-secondary-container": "#4b6954",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#c6e8cd",
+                        "primary": "#003466",
+                        "surface-container-low": "#f1f4fa",
+                        "on-primary-fixed-variant": "#144780",
+                        "tertiary": "#1d3742",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#344e59",
+                        "surface-bright": "#f7f9ff",
+                        "on-primary-fixed": "#001c3b",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c3c6d1",
+                        "background": "#f7f9ff",
+                        "inverse-on-surface": "#eef1f7",
+                        "on-tertiary-fixed": "#021f29",
+                        "inverse-primary": "#a6c8ff",
+                        "secondary-fixed-dim": "#adcfb5",
+                        "primary-container": "#1a4b84",
+                        "on-surface": "#181c20",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#304d39",
+                        "surface": "#f7f9ff",
+                        "tertiary-fixed-dim": "#afcbd8",
+                        "on-secondary-fixed": "#032110",
+                        "secondary-fixed": "#c9ebd0",
+                        "inverse-surface": "#2d3135",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "surface-container-highest": "#dfe3e8",
+                        "on-tertiary-fixed-variant": "#304a55"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .whisper-shadow {
+            box-shadow: 0 12px 32px -4px rgba(24, 28, 32, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (Predicted Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto z-40 bg-slate-50 flex flex-col border-r border-slate-200/15 font-manrope text-sm font-medium tracking-tight">
+<div class="p-6 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-blue-900">FaunaFlow</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Enterprise Ledger</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 text-blue-700 font-semibold border-r-4 border-blue-700 bg-blue-50/50 transition-colors duration-200" href="{{DATA:SCREEN:SCREEN_29}}">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-800 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-800 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-800 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-800 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Visits</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-800 hover:bg-slate-200/50 transition-colors duration-200" href="{{DATA:SCREEN:SCREEN_14}}">
+<span class="material-symbols-outlined">local_shipping</span>
+<span>Logistica</span>
+</a><a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-blue-800 hover:bg-slate-200/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_circle</span>
+<span>New Transaction</span>
+</button>
+</div>
+</aside>
+<!-- TopAppBar (Predicted Component) -->
+<header class="fixed top-0 right-0 left-64 h-16 z-30 flex items-center justify-between px-8 bg-white/70 backdrop-blur-xl border-b border-slate-200/15 shadow-sm shadow-slate-200/50 font-manrope">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 transition-all" placeholder="Search enterprise ledger..." type="text"/>
+</div>
+</div>
+<nav class="hidden lg:flex gap-6 mr-6">
+<a class="text-blue-700 text-sm font-bold" href="{{DATA:SCREEN:SCREEN_29}}">Dashboard</a>
+<a class="text-slate-500 hover:text-blue-800 text-sm font-semibold" href="{{DATA:SCREEN:SCREEN_14}}">Logistica</a>
+</nav><div class="flex items-center gap-4">
+<button class="hover:bg-blue-50 rounded-full p-2 transition-all relative text-slate-600">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="hover:bg-blue-50 rounded-full p-2 transition-all text-slate-600">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden xl:block">
+<p class="text-xs font-bold text-on-surface">Manager Account</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Wholesale Admin</p>
+</div>
+<img alt="Manager Avatar" class="w-10 h-10 rounded-full border-2 border-primary/10 object-cover" data-alt="professional corporate headshot of a business manager in a clean modern office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxuNnoX-jK078GUx8QoR2lWV04Kwyx05Cbsbx5J4cTSwNLURyNg1wiQj9vkh8JC2II7g8Sx58iULcYHXR67PKDOsmy-CEqhjQB_66Qk9BkKJ3bb1dXGTGsO_MgnIMu2WReSp_nCTGBHD5_ZIi3PIB7mTACTlGQcyoq2g45Ic6ZDJUb60yKoJ68GFcJZTYUoFaG2-y4JF-bAhCMhG05IhwuHEQkKCPJ5yFFer1BCVCvL2M8WFhg0KdzioqcbxeKXVoTv8sRoKq6wg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+<!-- Dashboard Header -->
+<div class="mb-10">
+<h2 class="text-3xl font-extrabold text-on-surface tracking-tight mb-1">Executive Dashboard</h2>
+<p class="text-on-surface-variant font-medium">FaunaFlow Enterprise Operations Hub</p>
+</div>
+<!-- 1. KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="p-2 bg-primary/5 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-secondary font-bold text-xs flex items-center gap-1 bg-secondary-container px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-xs">trending_up</span> +15%
+                    </span>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">Total Monthly Sales</p>
+<h3 class="text-2xl font-extrabold text-primary">$428,500</h3>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="p-2 bg-tertiary/5 rounded-lg text-tertiary">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">Active Shipments</p>
+<h3 class="text-2xl font-extrabold text-on-surface">12</h3>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="p-2 bg-secondary/5 rounded-lg text-secondary">
+<span class="material-symbols-outlined">event_note</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">Pending Visits</p>
+<h3 class="text-2xl font-extrabold text-on-surface">8</h3>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="p-2 bg-primary-container/5 rounded-lg text-primary-container">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider mb-1">New Clients</p>
+<h3 class="text-2xl font-extrabold text-on-surface">5</h3>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- 2. Large Chart: Monthly Sales Trends -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl whisper-shadow">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h3 class="text-xl font-extrabold text-primary tracking-tight">Monthly Sales Trends</h3>
+<p class="text-sm text-slate-500 font-medium">Comparison across inventory categories</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 text-xs font-bold bg-slate-100 rounded-lg text-slate-600">Last 6 Months</button>
+<button class="material-symbols-outlined p-1.5 text-slate-400 hover:text-primary">more_vert</button>
+</div>
+</div>
+<!-- Mock Bar Chart using Tailwind -->
+<div class="flex items-end justify-between h-64 gap-4 px-2">
+<!-- Column Group -->
+<div class="flex-1 flex flex-col items-center gap-3 h-full">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-4 bg-primary/20 rounded-t-sm h-[40%]"></div>
+<div class="w-4 bg-primary/40 rounded-t-sm h-[60%]"></div>
+<div class="w-4 bg-primary/80 rounded-t-sm h-[85%]"></div>
+<div class="w-4 bg-primary rounded-t-sm h-[70%]"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Jan</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 h-full">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-4 bg-primary/20 rounded-t-sm h-[50%]"></div>
+<div class="w-4 bg-primary/40 rounded-t-sm h-[45%]"></div>
+<div class="w-4 bg-primary/80 rounded-t-sm h-[65%]"></div>
+<div class="w-4 bg-primary rounded-t-sm h-[80%]"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Feb</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 h-full">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-4 bg-primary/20 rounded-t-sm h-[30%]"></div>
+<div class="w-4 bg-primary/40 rounded-t-sm h-[55%]"></div>
+<div class="w-4 bg-primary/80 rounded-t-sm h-[90%]"></div>
+<div class="w-4 bg-primary rounded-t-sm h-[60%]"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Mar</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3 h-full">
+<div class="w-full flex items-end justify-center gap-1 h-full">
+<div class="w-4 bg-primary/20 rounded-t-sm h-[60%]"></div>
+<div class="w-4 bg-primary/40 rounded-t-sm h-[70%]"></div>
+<div class="w-4 bg-primary/80 rounded-t-sm h-[50%]"></div>
+<div class="w-4 bg-primary rounded-t-sm h-[95%]"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400 uppercase">Apr</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex items-center justify-center gap-6 mt-8 pt-6 border-t border-slate-100">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary/20"></span>
+<span class="text-[11px] font-bold text-slate-500 uppercase">Live Animals</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary/40"></span>
+<span class="text-[11px] font-bold text-slate-500 uppercase">Accessories</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary/80"></span>
+<span class="text-[11px] font-bold text-slate-500 uppercase">Feed</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-[11px] font-bold text-slate-500 uppercase">Technical</span>
+</div>
+</div>
+</div>
+<!-- 3. Visit Calendar Widget -->
+<div class="bg-surface-container-low p-8 rounded-xl whisper-shadow border border-white">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-extrabold text-on-surface tracking-tight">Today's Visits</h3>
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary whisper-shadow">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<!-- Visit 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-4 border-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-primary bg-primary/5 px-2 py-0.5 rounded">10:00 AM</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider bg-slate-100 px-2 py-0.5 rounded">Programmed</span>
+</div>
+<h4 class="font-bold text-on-surface text-sm">Clinica San Francesco</h4>
+<p class="text-xs text-on-surface-variant">Annual supply audit &amp; checkup</p>
+</div>
+<!-- Visit 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-secondary bg-secondary/5 px-2 py-0.5 rounded">02:30 PM</span>
+<span class="text-[10px] font-bold text-secondary-container bg-secondary text-white px-2 py-0.5 rounded">Completed</span>
+</div>
+<h4 class="font-bold text-on-surface text-sm">Allevamento Green Hills</h4>
+<p class="text-xs text-on-surface-variant">Specialized feed consultation</p>
+</div>
+</div>
+<button class="w-full py-4 bg-white text-primary border border-primary/20 rounded-xl font-bold text-sm hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                    New Visit
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+<!-- 4. Logistica (Logistics) Widget -->
+<div class="lg:col-span-1 bg-surface-container-lowest p-8 rounded-xl whisper-shadow">
+<div class="flex justify-between items-center mb-8">
+<a class="group flex items-center gap-2" href="{{DATA:SCREEN:SCREEN_14}}">
+<h3 class="text-xl font-extrabold text-primary tracking-tight group-hover:underline">Logistica</h3>
+<span class="material-symbols-outlined text-primary text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface-container-low rounded-xl">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Veicoli Attivi</p>
+<div class="flex items-center gap-2">
+<span class="text-2xl font-extrabold text-on-surface">18</span>
+<span class="text-[10px] text-secondary font-bold">+2</span>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">In Corso</p>
+<div class="flex items-center gap-2">
+<span class="text-2xl font-extrabold text-on-surface">32</span>
+<span class="text-[10px] text-secondary font-bold">85%</span>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-2">Spedizioni Recenti</p>
+<!-- Ship 1 -->
+<!-- Bio Monitoring Link -->
+<a class="flex items-center justify-between p-3 rounded-lg border border-primary/10 bg-primary/5 hover:bg-primary/10 transition-colors mb-2" href="{{DATA:SCREEN:SCREEN_39}}">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">thermostat</span>
+<div>
+<p class="text-xs font-bold text-primary">Monitoraggio Biologico</p>
+<p class="text-[10px] text-slate-500">Stato: Ottimale</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">chevron_right</span>
+</a><div class="flex items-center justify-between p-3 rounded-lg border border-slate-50 hover:bg-slate-50/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary/60">package_2</span>
+<div>
+<p class="text-xs font-bold text-on-surface">#SHP-4421</p>
+<p class="text-[10px] text-slate-500">Milan Hub</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700">In Transito</span>
+</div>
+<!-- Ship 2 -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-slate-50 hover:bg-slate-50/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary/60">task_alt</span>
+<div>
+<p class="text-xs font-bold text-on-surface">#SHP-4419</p>
+<p class="text-[10px] text-slate-500">Rome Depot</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container">Consegnato</span>
+</div>
+<!-- Ship 3 -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-slate-50 hover:bg-slate-50/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error/60">schedule</span>
+<div>
+<p class="text-xs font-bold text-on-surface">#SHP-4415</p>
+<p class="text-[10px] text-slate-500">Turin Log.</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container">In Ritardo</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 text-sm font-bold text-primary border border-primary/20 rounded-xl hover:bg-primary/5 transition-colors" onclick="location.href='{{DATA:SCREEN:SCREEN_14}}'">Vedi Tutto</button>
+</div>
+<!-- 5. Recent Orders Table (Moved to 2/3 column layout) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl whisper-shadow overflow-hidden">
+<div class="p-8 border-b border-slate-50 flex justify-between items-center">
+<div>
+<h3 class="text-xl font-extrabold text-primary tracking-tight">Recent Orders</h3>
+<p class="text-sm text-slate-500 font-medium">Latest transactions across the enterprise</p>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">View All Orders</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50/50">
+<tr>
+<th class="px-8 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest">Order ID</th>
+<th class="px-8 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest">Client</th>
+<th class="px-8 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest">Status</th>
+<th class="px-8 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest">Total</th>
+<th class="px-8 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/30 transition-colors">
+<td class="px-8 py-5 text-sm font-bold text-primary">#ORD-28491</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 font-bold text-[10px]">AP</div>
+<span class="text-sm font-semibold text-on-surface">Aqua Pet Center</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Shipped
+                            </span>
+</td>
+<td class="px-8 py-5 text-sm font-extrabold text-on-surface">$12,450.00</td>
+<td class="px-8 py-5 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary">visibility</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/30 transition-colors">
+<td class="px-8 py-5 text-sm font-bold text-primary">#ORD-28488</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 font-bold text-[10px]">VH</div>
+<span class="text-sm font-semibold text-on-surface">Vet Hospital Nord</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-600">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Pending
+                            </span>
+</td>
+<td class="px-8 py-5 text-sm font-extrabold text-on-surface">$3,120.50</td>
+<td class="px-8 py-5 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary">visibility</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/30 transition-colors">
+<td class="px-8 py-5 text-sm font-bold text-primary">#ORD-28485</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 font-bold text-[10px]">ZD</div>
+<span class="text-sm font-semibold text-on-surface">Zoo Direct Co.</span>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Paid
+                            </span>
+</td>
+<td class="px-8 py-5 text-sm font-extrabold text-on-surface">$24,900.00</td>
+<td class="px-8 py-5 text-right">
+<button class="material-symbols-outlined text-slate-400 hover:text-primary">visibility</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>
